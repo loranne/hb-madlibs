@@ -56,17 +56,28 @@ def show_madlib_form():
     # render_template("compliment.html",
     #                 is_playing="gameplay")
 
-        
+
     #pull in compleiment.html -- > get userinput
     #conditional statement: if yes
-    #   route to game.html 
+    #   route to game.html
     #   goes to page /madlib
     #condiional: if no
-    #   route to goodbye.html 
+    #   route to goodbye.html
 
 @app.route('/madlib')
 def show_madlib():
-    return render_template("game.html")
+    person = request.args.get("person")
+    color = request.args.get("color")
+    noun = request.args.get("noun")
+    adjective = request.args.get("adjective")
+    adverb = request.args.get("adverb")
+
+    return render_template("madlib.html",
+                            person=person,
+                            color=color,
+                            noun=noun,
+                            adjective=adjective,
+                            adverb=adverb)
 
 if __name__ == '__main__':
     # Setting debug=True gives us error messages in the browser and also
